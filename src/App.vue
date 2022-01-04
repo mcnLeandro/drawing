@@ -1,9 +1,12 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <header id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </header>
+    <router-view />
+    <sl-button variant="primary">Button</sl-button>
   </div>
-  <router-view />
 </template>
 
 <style>

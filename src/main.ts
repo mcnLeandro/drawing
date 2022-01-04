@@ -1,6 +1,17 @@
+import "@shoelace-style/shoelace/dist/themes/light.css";
+import "@shoelace-style/shoelace/dist/shoelace";
+import ShoelaceModelDirective from "@shoelace-style/vue-sl-model";
+import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path";
+
+setBasePath(
+  "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.63/dist/"
+);
+
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-createApp(App).use(store).use(router).mount("#app");
+const app = createApp(App).use(store).use(router).use(ShoelaceModelDirective);
+app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith("sl-");
+app.mount("#app");
