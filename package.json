@@ -12,6 +12,7 @@
     "@shoelace-style/shoelace": "^2.0.0-beta.63",
     "@shoelace-style/vue-sl-model": "^2.0.0",
     "core-js": "^3.6.5",
+    "konva": "^8.3.2",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.0-0",

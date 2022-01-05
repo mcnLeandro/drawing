@@ -1,28 +1,55 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-
-    {{ hey }}
-    {{ heyStore }}
-    <button @click="getHey()">getHey</button>
-    <input type="text" v-model="form" />
-    <button @click="onSubmit">update</button>
+    <SideBar/>
+    <div id="myCanvas"></div>
   </div>
 </template>
 
+<style>
+#myCanvas {
+  height: 100vh;
+  width: 100%;
+  border: solid 1px black;
+}
+</style>
+
 <script lang="ts">
 import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, ref, onMounted } from "vue";
 import { useStore } from "@/store";
-import HelloWorld from "@/components/HelloWorld.vue";
 import MutationTypes from "@/store/mutationTypes";
 
+import SideBar from '@/components/SideBar.vue'
+import Konva from 'konva'
 export default defineComponent({
   name: "Home",
   components: {
-    HelloWorld,
+    SideBar
   },
   setup() {
+    onMounted(()=>{
+
+      const canvas = document.querySelector("#myCanvas")!;
+      const stage: Konva.Stage = new Konva.Stage({
+        container: canvas as HTMLDivElement,
+        width: canvas.clientWidth,
+        height: canvas.clientHeight,
+      })
+
+      const layer = new Konva.Layer();
+      stage.add(layer);
+
+      const rect: Konva.Rect = new Konva.Rect({
+        x: 20,
+        y: 20,
+        width: 100,
+        height: 50,
+        fill: 'green',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable: true,
+      });
+    })
     const form = ref("");
 
     const clearForm = () => {
