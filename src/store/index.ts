@@ -1,10 +1,15 @@
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 import MutationTypes from "@/store/mutationTypes";
+import Konva from "konva";
 
 // stateの型定義
+type DrawingMode = 'brush' | 'eraser'
+
 type State = {
-  heyStore: string;
+  mode: DrawingMode,
+  isPaint: boolean,
+  lastLine: Konva.Line
 };
 
 // storeをprovide/injectするためのキー
@@ -12,11 +17,19 @@ export const key: InjectionKey<Store<State>> = Symbol();
 // store本体
 export const store = createStore<State>({
   state: {
-    heyStore: "heyStore i knew that i see you again",
+    isPaint: false,
+    mode: 'brush',
+    lastLine: new Konva.Line({})
   },
   mutations: {
-    [MutationTypes.setHeyStore](state, heyStore: string) {
-      state.heyStore = heyStore;
+    [MutationTypes.setMode](state, mode: DrawingMode) {
+      state.mode = mode;
+    },
+    [MutationTypes.setIsPaint](state, isPaint: boolean) {
+      state.isPaint = isPaint;
+    },
+    [MutationTypes.setLastLine](state, latLine: Konva.Line) {
+      state.lastLine = latLine
     },
   },
   actions: {},
