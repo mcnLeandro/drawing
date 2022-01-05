@@ -1,7 +1,7 @@
 
 <template>
-  <div>
-    <sl-drawer label="Mode" placement="start" class="drawer-placement-start">
+  <div class="on-over">
+    <sl-drawer label="Mode" placement="start" class="drawer-placement-start" pointer-events="all">
       <sl-menu class="drawing-mode-menu" style="max-width: 100%;">
         <sl-menu-item @click="changeMode('brush')">
           <sl-icon name="brush"></sl-icon>Brush
@@ -11,16 +11,18 @@
         </sl-menu-item>
       </sl-menu>
       <sl-divider></sl-divider>
-      </sl-drawer>
-    <sl-button variant="default" size="large" circle>
+    </sl-drawer>
+    <sl-button variant="default" size="large" circle pointer-events="all">
       <sl-icon :name="iconName[mode]" label="Edit"></sl-icon>
     </sl-button>
   </div>
 </template>
 
 <style>
-.text-right {
-  text-align: right;
+.on-over {
+  padding: var(--sl-spacing-large);
+  position: absolute;
+  z-index: 100;
 }
 </style>
 

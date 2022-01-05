@@ -9,7 +9,6 @@
 #myCanvas {
   height: 100vh;
   width: 100%;
-  border: solid 1px black;
 }
 </style>
 
