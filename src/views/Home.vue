@@ -2,17 +2,56 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+
+    {{ hey }}
+    {{ heyStore }}
+    <button @click="getHey()">getHey</button>
+    <input type="text" v-model="form" />
+    <button @click="onSubmit">update</button>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import { computed, defineComponent, ref } from "vue";
+import { useStore } from "@/store";
+import HelloWorld from "@/components/HelloWorld.vue";
+import MutationTypes from "@/store/mutationTypes";
 
-@Options({
+export default defineComponent({
+  name: "Home",
   components: {
     HelloWorld,
   },
-})
-export default class Home extends Vue {}
+  setup() {
+    const form = ref("");
+
+    const clearForm = () => {
+      form.value = "";
+    };
+
+    const hey = ref("HEYYYYYYYYY");
+
+    function getHey() {
+      console.log("hEYYYYYYY?????");
+    }
+
+    // store
+    const store = useStore();
+    const heyStore = computed(() => store.state.heyStore);
+    console.log(heyStore);
+
+    const onSubmit = () => {
+      store.commit(MutationTypes.setHeyStore, form.value);
+      clearForm();
+    };
+
+    return {
+      form,
+      hey,
+      getHey,
+      heyStore,
+      onSubmit,
+    };
+  },
+});
 </script>

@@ -1,11 +1,7 @@
 <template>
   <div>
-    <header id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </header>
+    <header id="nav"><router-link to="/">Home</router-link> |</header>
     <router-view />
-    <sl-button variant="primary">Button</sl-button>
   </div>
 </template>
 

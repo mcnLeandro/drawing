@@ -10,8 +10,11 @@ setBasePath(
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import { key, store } from "./store";
 
-const app = createApp(App).use(store).use(router).use(ShoelaceModelDirective);
+const app = createApp(App)
+  .use(store, key)
+  .use(router)
+  .use(ShoelaceModelDirective);
 app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith("sl-");
 app.mount("#app");
