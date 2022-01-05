@@ -2,10 +2,8 @@ import { InjectionKey } from "vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 import MutationTypes from "@/store/mutationTypes";
 import Konva from "konva";
-
+import { DrawingMode } from "@/config"
 // stateの型定義
-type DrawingMode = 'brush' | 'eraser'
-
 type State = {
   mode: DrawingMode,
   isPaint: boolean,

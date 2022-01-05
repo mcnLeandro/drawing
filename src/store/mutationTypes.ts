@@ -1,6 +1,6 @@
 const MutationTypes = {
   setIsPaint: "setIsPaint",
-  setMode: "setIsPaint",
+  setMode: "setMode",
   setLastLine: "setLastLine"
 };
 

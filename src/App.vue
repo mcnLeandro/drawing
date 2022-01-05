@@ -11,6 +11,7 @@
   margin: 0;
 }
 html, body {
+    font-family:var(--sl-font-mono);
     overflow: hidden;
 }
 
